@@ -25,7 +25,8 @@ interface Serviceable
     /**
      * Refills the required resource.
      *
+     * @param array $amounts
      * @return void
      */
-    public function refill(): void;
+    public function refill(array $amounts): void;
 }

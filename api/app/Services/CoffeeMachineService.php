@@ -61,8 +61,18 @@ class CoffeeMachineService implements Serviceable
     /**
      * @inheritDoc
      */
-    public function refill(): void
+    public function refill(array $amounts): void
     {
-        // TODO: Implement refill() method.
+        if (!empty($amounts['water'])) {
+            $this->water->add($amounts['water']);
+            $this->machine->water_level_ml = $this->water->get();
+        }
+
+        if (!empty($amounts['coffee'])) {
+            $this->coffee->add($amounts['coffee']);
+            $this->machine->coffee_level_grams = $this->coffee->get();
+        }
+
+        $this->machine->save();
     }
 }
