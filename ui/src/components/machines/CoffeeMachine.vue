@@ -18,9 +18,15 @@ import CoffeeMachineWaterLevel from '@/components/machines/CoffeeMachineWaterLev
 import CoffeeMachineCoffeeGramsLevel from '@/components/machines/CoffeeMachineCoffeeGramsLevel.vue';
 import CoffeeMachineLoadingIndicator from '@/components/machines/CoffeeMachineLoadingIndicator.vue';
 import DialogModal from '@/components/dialogs/DialogModal.vue';
+import { useForm } from '@/composables/data/useForm.js';
 
 const $machine = useCoffeeMachine();
 const { coffees } = storeToRefs($machine);
+
+const $form = useForm({
+  water: '',
+  coffee: '',
+});
 
 const $cards = shallowRef({
   espresso: CoffeeEspresso,
@@ -36,12 +42,12 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <Flex class="m-3 max-h-screen flex-col gap-5 overflow-y-auto rounded-4xl border-5 p-10">
+  <Flex class="m-3 max-h-screen flex-col gap-5 rounded-4xl border-5 p-10">
     <DialogModal />
     <BrandLogo class="mb-4" />
 
     <span class="text-center text-sm font-bold text-gray-400 uppercase">Please select your coffee</span>
-    <Flex class="w-full items-center justify-center overflow-x-auto">
+    <Flex class="w-full items-center justify-center">
       <template v-for="coffee in coffees" :key="coffee.value">
         <CoffeeMachineLoadingIndicator :loading="coffee.loading">
           <component
@@ -64,6 +70,7 @@ onBeforeMount(() => {
         <Flex class="flex-1 items-start gap-0 rounded-lg bg-white">
           <ControlInput
             id="water_capacity"
+            v-model="$form.water"
             class="h-8 min-w-50 border-e-0"
             name="water_capacity"
             hide-label
@@ -71,10 +78,14 @@ onBeforeMount(() => {
             placeholder="Add milliliters"
             type="number"
             min="0.0"
-            step="0.5"
-            max="2.0"
+            step="100"
+            max="2000.0"
           />
-          <ControlButton class="inline-flex h-8 rounded-s-none" @click="$machine.fillWater()">
+          <span
+            class="flex h-8 w-8 items-center justify-center border border-e-0 border-gray-200 px-1 text-sm font-bold text-gray-500"
+            >ml</span
+          >
+          <ControlButton class="inline-flex h-8 rounded-s-none" @click="$machine.refillWater($form.water)">
             <IconBucketFill class="size-4" />
             Refill Water
           </ControlButton>
@@ -82,6 +93,7 @@ onBeforeMount(() => {
         <Flex class="flex-1 gap-0 rounded-lg bg-white">
           <ControlInput
             id="coffee_capacity"
+            v-model="$form.coffee"
             class="h-8 min-w-50 border-e-0"
             name="coffee_capacity"
             hide-label
@@ -92,7 +104,11 @@ onBeforeMount(() => {
             step="50"
             max="500"
           />
-          <ControlButton class="inline-flex h-8 rounded-s-none" @click="$machine.topUpCoffee()">
+          <span
+            class="flex h-8 w-8 items-center justify-center border border-e-0 border-gray-200 px-1 text-sm font-bold text-gray-500"
+            >g</span
+          >
+          <ControlButton class="inline-flex h-8 rounded-s-none" @click="$machine.refillCoffee($form.coffee)">
             <IconCoffeeBean class="size-3" />
             Add Coffee
           </ControlButton>
@@ -102,7 +118,7 @@ onBeforeMount(() => {
         <!--<CoffeeMachineSerialCode class="mt-1" />-->
         <CoffeeMachineWaterLevel />
         <CoffeeMachineCoffeeGramsLevel />
-        <ControlButton class="h-8" @click="$machine.healthcheck()">
+        <ControlButton class="h-8" @click="$machine.healthcheck(true)">
           <IconHeartPulse class="size-4" />
           Check Machine
         </ControlButton>

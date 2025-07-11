@@ -29,7 +29,6 @@ export const useCoffeeMachine = () => {
             text: response.data.message,
             context: 'error',
           });
-          console.log('error', response.data);
         })
         .finally(() => {
           $store.unselect(coffee);
@@ -37,14 +36,68 @@ export const useCoffeeMachine = () => {
         });
 
       $store.defineMachine(machine);
-    }, 200);
+    }, 1100);
   };
 
-  const healthcheck = async () => {
+  const refillWater = async (amount) => {
+    await refill('water', amount);
+  };
+
+  const refillCoffee = async (amount) => {
+    await refill('coffee', amount);
+  };
+
+  const refill = async (type, amount = 0) => {
+    if (!amount?.length) {
+      $modal.open({
+        title: 'Oops!',
+        text: `Please enter a valid ${type} amount.`,
+        context: 'warning',
+      });
+      return;
+    }
+
+    $store.startLoading();
+    const { data: machine } = await $api
+      .post('/v1/machine/refill', { [type]: amount })
+      .catch(({ response }) => {
+        $modal.open({
+          title: 'Refill failed!',
+          text: response.data.message,
+          context: 'error',
+        });
+      })
+      .finally(() => {
+        setTimeout(() => {
+          $store.stopLoading();
+        }, 800);
+      });
+
+    $modal.open({
+      title: 'Refill successful!',
+      text: 'Your machine has been refilled.',
+      context: 'success',
+    });
+
+    $store.defineMachine(machine);
+  };
+
+  const healthcheck = async (assertive = false) => {
     $store.startLoading();
     const { data: machine } = await $api.get('/v1/machine/healthcheck');
+
+    if (assertive) {
+      $modal.open({
+        title: 'Machine Status',
+        text: `The machine has ${machine.water_level_liters}ml of water and ${machine.coffee_level_grams}g of coffee left.`,
+        context: 'info',
+      });
+    }
+
     $store.defineMachine(machine);
-    $store.stopLoading();
+    setTimeout(() => {
+      $store.stopLoading();
+    }, 800);
   };
 
   return {
@@ -54,5 +107,7 @@ export const useCoffeeMachine = () => {
     healthcheck,
     coffees,
     machine,
+    refillWater,
+    refillCoffee,
   };
 };

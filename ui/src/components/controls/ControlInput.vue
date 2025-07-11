@@ -1,4 +1,7 @@
 <script setup>
+const $emit = defineEmits(['update:modelValue']);
+const $model = defineModel();
+
 defineProps({
   hideLabel: Boolean,
 });
@@ -14,10 +17,12 @@ export default {
   <div class="relative flex-1">
     <label :for="$attrs.name" :class="[hideLabel && 'sr-only', 'text-sm font-semibold']">{{ $attrs.label }}</label>
     <input
+      v-model="$model"
       v-bind="$attrs"
       :name="$attrs.name"
       :class="[$slots.prepend && 'ps-11']"
       class="peer block w-full rounded-s-md border border-gray-200 px-4 py-2.5 focus:z-10 focus:border-blue-500 focus:ring-blue-500 sm:py-3 sm:text-sm"
+      @input="$emit('update:modelValue', $event.target.value)"
     />
     <div
       v-if="$slots.prepend"
