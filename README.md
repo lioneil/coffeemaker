@@ -30,7 +30,9 @@ coffeemaker/
 cd coffeemaker/api
 composer install
 cp .env.example .env
+vendor/bin/sail up -d
 vendor/bin/sail artisan migrate:fresh --seed
+vendor/bin/sail artisan storage:link
 ```
 
 **Frontend**:
@@ -54,3 +56,8 @@ npm run dev
 The backend api is located at `http://localhost/`.
 
 Visit `http://localhost:5714` Coffeemaker application.
+
+
+## Notes
+
+- The `CoffeeResource` class only serves to showcase my use of the resource pattern from Laravel.
