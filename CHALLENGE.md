@@ -14,39 +14,39 @@ The API should have endpoints to allow the following actions:
 - [x] Make one Double Espresso
 - [x] Make one Americano
 - [x] Check the status of the machine
-- [ ] Fill the water container
-- [ ] Fill the coffee container
+- [x] Fill the water container
+- [x] Fill the coffee container
 
 The Vue interface should allow the following actions:
 
-- [ ] Press a button to make one Espresso
-- [ ] Press a button to make one Double Espresso
-- [ ] Press a button to make one Americano
-- [ ] Press a button to display the status
-- [ ] Provide an input to fill the water container
-- [ ] Provide an input to fill the coffee container
-- [ ] Display any messages received from the API
+- [x] Press a button to make one Espresso
+- [x] Press a button to make one Double Espresso
+- [x] Press a button to make one Americano
+- [x] Press a button to display the status
+- [x] Provide an input to fill the water container
+- [x] Provide an input to fill the coffee container
+- [x] Display any messages received from the API
 
 ## Coffee machine requirements
 
-- [ ] The standard WaterContainer contains 2 litres but other sizes can be attached.
-- [ ] The standard CoffeeContainer holds 500 grams of coffee but other sizes can be attached.
-- [ ] A single espresso uses 8 grams of coffee and 24 ml of water.
-- [ ] A double espresso uses 16 grams of coffee and 48 ml of water.
-- [ ] A single ristretto used 8 grams of coffee and 16 ml of water.
-- [ ] A single americano uses 16 grams of coffee and 148 ml of water.
+- [x] The standard WaterContainer contains 2 litres but other sizes can be attached.
+- [x] The standard CoffeeContainer holds 500 grams of coffee but other sizes can be attached.
+- [x] A single espresso uses 8 grams of coffee and 24 ml of water.
+- [x] A double espresso uses 16 grams of coffee and 48 ml of water.
+- [x] A single ristretto used 8 grams of coffee and 16 ml of water.
+- [x] A single americano uses 16 grams of coffee and 148 ml of water.
 
 ## Requirements
 
-- Return human readable error messages:
-  - when at least one of the containers is empty when trying to make coffee
-  - when a container will overflow if more liters/grams are added
-  - any other exception occures
-- You are free to use whatever you want to save the state of the coffee machine between requests.
-- The naming of API endpoints and returned data is up to you.
-- Use a docker container for the development.
-- Please include clear instructions on how to run your solution and list any assumptions that you have made.
-- If you have any questions or need any clarifications, feel free to make assumptions, but make sure to write down which assumptions you made.
+- [x] Return human readable error messages:
+  - [x] when at least one of the containers is empty when trying to make coffee
+  - [x] when a container will overflow if more liters/grams are added
+  - [x] any other exception occurs
+- [x] You are free to use whatever you want to save the state of the coffee machine between requests.
+- [x] The naming of API endpoints and returned data is up to you.
+- [x] Use a docker container for the development.
+- [ ] Please include clear instructions on how to run your solution and list any assumptions that you have made.
+- [x] If you have any questions or need any clarifications, feel free to make assumptions, but make sure to write down which assumptions you made.
 
 ## To easy? Nice to have then
 
