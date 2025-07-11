@@ -1,15 +1,18 @@
-# Coffeemaker
+# Koffeemaker 9000
+
+![Koffeemaker 9000](./featured.alt.png)
 
 A full-stack web application demonstration built with Laravel (API) and Vue 3 (UI).
 
 This is an implementation of the BlueShore Services [Laravel/Vue Challenge](https://github.com/BlueShores-Services/laravel-vue-challenge).
 
-## 🧱 Project Structure
+## 🗂️ Project Structure
 
 ```bash
 coffeemaker/
 ├── api/
 ├── ui/
+├── CHALLENGE.md
 ├── README.md
 ```
 
@@ -39,11 +42,12 @@ vendor/bin/sail artisan storage:link
 
 ```bash
 cd coffeemaker/ui
+cp .env.example .env
 nvm use # optional, if using nvm.
 npm install
 ```
 
-### Running the Demo
+## ⚡ Running the Demo
 
 ```bash
 cd coffeemaker/api
@@ -55,9 +59,4 @@ npm run dev
 
 The backend api is located at `http://localhost/`.
 
-Visit `http://localhost:5714` Coffeemaker application.
-
-
-## Notes
-
-- The `CoffeeResource` class only serves to showcase my use of the resource pattern from Laravel.
+Visit `http://localhost:5714` Koffeemaker application.
