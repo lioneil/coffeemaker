@@ -1,5 +1,22 @@
 {
   "$schema": "https://json.schemastore.org/prettierrc",
+  "plugins": ["prettier-plugin-organize-attributes", "prettier-plugin-tailwindcss"],
+  "attributeGroups": [
+    "^(is|id)$",
+    "^v-for$",
+    "^(v-if|v-else-if|v-else|v-show|v-cloak)$",
+    "^(v-pre|v-once)$",
+    "^(ref|key|slot|slot-scope)$",
+    "^v-model",
+    "^(v-[^:]+)",
+    "^:.*",
+    "^class$",
+    "^style$",
+    "^aria-.*",
+    "$DEFAULT",
+    "^@.*",
+    "^(v-html|v-text)$"
+  ],
   "semi": true,
   "singleQuote": true,
   "printWidth": 120,

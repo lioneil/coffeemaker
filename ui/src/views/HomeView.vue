@@ -1,8 +1,10 @@
 <script setup>
+import MainWindow from '@/components/containments/MainWindow.vue';
+import CoffeeMachine from '@/components/machines/CoffeeMachine.vue';
 </script>
 
 <template>
-  <main>
-    Main
-  </main>
+  <MainWindow>
+    <CoffeeMachine />
+  </MainWindow>
 </template>
