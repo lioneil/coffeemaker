@@ -23,6 +23,10 @@ class CoffeeSeeder extends Seeder
             Coffee::factory()->double()->create();
         }
 
+        if ($coffees->where('name', 'Ristretto')->isEmpty()) {
+            Coffee::factory()->ristretto()->create();
+        }
+
         if ($coffees->where('name', 'Americano')->isEmpty()) {
             Coffee::factory()->americano()->create();
         }

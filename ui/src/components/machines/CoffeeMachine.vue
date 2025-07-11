@@ -36,12 +36,12 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <Flex class="m-3 flex-col gap-5 rounded-4xl border-5 p-10">
+  <Flex class="m-3 max-h-screen flex-col gap-5 overflow-y-auto rounded-4xl border-5 p-10">
     <DialogModal />
     <BrandLogo class="mb-4" />
 
     <span class="text-center text-sm font-bold text-gray-400 uppercase">Please select your coffee</span>
-    <Flex class="items-center justify-center">
+    <Flex class="w-full items-center justify-center overflow-x-auto">
       <template v-for="coffee in coffees" :key="coffee.value">
         <CoffeeMachineLoadingIndicator :loading="coffee.loading">
           <component

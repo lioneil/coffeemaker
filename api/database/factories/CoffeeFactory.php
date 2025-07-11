@@ -30,8 +30,8 @@ class CoffeeFactory extends Factory
     {
         return $this->state(fn (array $attributes) => ([
             'name' => 'Espresso',
-            'water_ml' => 30.0,
-            'coffee_grams' => 10,
+            'water_ml' => 24.0,
+            'coffee_grams' => 8,
             'image' => url('/images/espresso.png'),
             'price' => 2.50,
         ]));
@@ -41,10 +41,21 @@ class CoffeeFactory extends Factory
     {
         return $this->state(fn (array $attributes) => ([
             'name' => 'Double Espresso',
-            'water_ml' => 60.0,
-            'coffee_grams' => 20,
+            'water_ml' => 48.0,
+            'coffee_grams' => 16,
             'image' => url('/images/double-espresso.png'),
             'price' => 5.00,
+        ]));
+    }
+
+    public function ristretto(): Factory
+    {
+        return $this->state(fn (array $attributes) => ([
+            'name' => 'Ristretto',
+            'water_ml' => 16.0,
+            'coffee_grams' => 8,
+            'image' => url('/images/ristretto.png'),
+            'price' => 3.25,
         ]));
     }
 
@@ -52,10 +63,10 @@ class CoffeeFactory extends Factory
     {
         return $this->state(fn (array $attributes) => ([
             'name' => 'Americano',
-            'water_ml' => 120.0,
-            'coffee_grams' => 20,
+            'water_ml' => 148.0,
+            'coffee_grams' => 16,
             'image' => url('/images/americano.png'),
-            'price' => 3.62,
+            'price' => 5.25,
         ]));
     }
 }
