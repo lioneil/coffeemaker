@@ -10,31 +10,31 @@ We provided an Interface to implement and use on the API.
 
 The API should have endpoints to allow the following actions:
 
-- Make one Espresso
-- Make one Double Espresso
-- Make one Americano
-- Check the status of the machine
-- Fill the water container
-- Fill the coffee container
+- [x] Make one Espresso
+- [x] Make one Double Espresso
+- [x] Make one Americano
+- [x] Check the status of the machine
+- [ ] Fill the water container
+- [ ] Fill the coffee container
 
 The Vue interface should allow the following actions:
 
-- Press a button to make one Espresso
-- Press a button to make one Double Espresso
-- Press a button to make one Americano
-- Press a button to display the status
-- Provide an input to fill the water container
-- Provide an input to fill the coffee container
-- Display any messages received from the API
+- [ ] Press a button to make one Espresso
+- [ ] Press a button to make one Double Espresso
+- [ ] Press a button to make one Americano
+- [ ] Press a button to display the status
+- [ ] Provide an input to fill the water container
+- [ ] Provide an input to fill the coffee container
+- [ ] Display any messages received from the API
 
 ## Coffee machine requirements
 
-- The standard WaterContainer contains 2 litres but other sizes can be attached.
-- The standard CoffeeContainer holds 500 grams of coffee but other sizes can be attached.
-- A single espresso uses 8 grams of coffee and 24 ml of water.
-- A double espresso uses 16 grams of coffee and 48 ml of water.
-- A single ristretto used 8 grams of coffee and 16 ml of water.
-- A single americano uses 16 grams of coffee and 148 ml of water.
+- [ ] The standard WaterContainer contains 2 litres but other sizes can be attached.
+- [ ] The standard CoffeeContainer holds 500 grams of coffee but other sizes can be attached.
+- [ ] A single espresso uses 8 grams of coffee and 24 ml of water.
+- [ ] A double espresso uses 16 grams of coffee and 48 ml of water.
+- [ ] A single ristretto used 8 grams of coffee and 16 ml of water.
+- [ ] A single americano uses 16 grams of coffee and 148 ml of water.
 
 ## Requirements
 

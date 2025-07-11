@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Api\Coffee;
+namespace App\Http\Controllers\Machine;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\CoffeeResource;
 use App\Services\CoffeeMachineService;
 use Illuminate\Http\Request;
 
-class GetCoffeeList extends Controller
+class CheckMachineHealthStatus extends Controller
 {
     /**
      * Handle the incoming request.
      */
     public function __invoke(Request $request, CoffeeMachineService $machine)
     {
-        return response()->json(CoffeeResource::collection($machine->coffees()));
+        return response()->json($machine->status());
     }
 }

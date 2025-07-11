@@ -4,9 +4,9 @@ return [
     'containers' => [
         'water' => [
             'name' => 'water',
-            'capacity' => env('COFFEE_MACHINE_WATER_CAPACITY', 2.0),
-            'remaining' => env('COFFEE_MACHINE_WATER_REMAINING', 2.0),
-            'unit' => 'L',
+            'capacity' => env('COFFEE_MACHINE_WATER_CAPACITY', 2000),
+            'remaining' => env('COFFEE_MACHINE_WATER_REMAINING', 2000),
+            'unit' => 'ml',
         ],
 
         'coffee' => [

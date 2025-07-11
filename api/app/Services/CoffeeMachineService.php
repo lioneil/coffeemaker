@@ -2,15 +2,21 @@
 
 namespace App\Services;
 
+use App\Containers\CoffeeContainer;
+use App\Containers\WaterContainer;
+use App\Http\Resources\MachineResource;
 use App\Models\Coffee;
+use App\Models\Machine;
 use App\Services\Contracts\Serviceable;
 use Illuminate\Support\Collection;
 
 class CoffeeMachineService implements Serviceable
 {
-    public function addWater(float $quantity): void {}
-
-    public function addCoffee(float $quantity): void {}
+    public function __construct(
+        protected Machine $machine,
+        protected WaterContainer $water,
+        protected CoffeeContainer $coffee,
+    ) {}
 
     /**
      * Retrieve all available coffee items.
@@ -23,11 +29,33 @@ class CoffeeMachineService implements Serviceable
     }
 
     /**
+     * @return \App\Models\Machine
+     */
+    public function machine(): Machine
+    {
+        return $this->machine;
+    }
+
+    /**
      * @inheritDoc
      */
-    public function status(): string
+    public function brew(Coffee $coffee): void
     {
-        // TODO: Implement status() method.
+        $this->water->use($coffee->water_ml);
+        $this->machine->water_level_ml = $this->water->get();
+
+        $this->coffee->use($coffee->coffee_grams);
+        $this->machine->coffee_level_grams = $this->coffee->get();
+
+        $this->machine->save();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function status(): MachineResource
+    {
+        return new MachineResource($this->machine());
     }
 
     /**
