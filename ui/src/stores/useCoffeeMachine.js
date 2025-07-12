@@ -15,6 +15,7 @@ export const useCoffeeMachineStore = defineStore('coffee.machine', () => {
     loading: coffee.loading ?? false,
     active: coffee.active ?? false,
     id: i,
+    price: false,
     ...coffee,
   });
 
@@ -23,7 +24,7 @@ export const useCoffeeMachineStore = defineStore('coffee.machine', () => {
   const select = (target) => {
     coffees.value = coffees.value.map((coffee) => ({
       ...coffee,
-      loading: coffee.id === target.id,
+      loading: false, //coffee.id === target.id,
       active: coffee.id === target.id,
     }));
   };

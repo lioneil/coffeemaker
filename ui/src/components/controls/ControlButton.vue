@@ -1,5 +1,9 @@
 <script setup>
 import { useMergeClasses } from '@/composables/utils/useMergeClasses';
+
+defineProps({
+  primary: Boolean,
+});
 </script>
 
 <template>
@@ -15,6 +19,11 @@ import { useMergeClasses } from '@/composables/utils/useMergeClasses';
           'focus:bg-gray-50 focus:outline-hidden',
           'disabled:pointer-events-none disabled:opacity-50',
           'active:bg-gray-100 active:shadow',
+          primary && 'border-gray-700 bg-black',
+          primary && 'text-white',
+          primary && 'hover:bg-gray-800',
+          primary && 'focus:bg-gray-800',
+          primary && 'active:bg-gray-900',
         ],
         $attrs.class,
       )

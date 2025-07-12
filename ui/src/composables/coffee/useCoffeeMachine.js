@@ -2,6 +2,7 @@ import { useApi } from '@/composables/api/useApi';
 import { useCoffeeMachineStore } from '@/stores/useCoffeeMachine';
 import { storeToRefs } from 'pinia';
 import { useDialogModalStore } from '@/stores/useDialogModal.js';
+import { computed } from 'vue';
 
 export const useCoffeeMachine = () => {
   const $modal = useDialogModalStore();
@@ -10,15 +11,20 @@ export const useCoffeeMachine = () => {
   const { loading, coffees, machine } = storeToRefs($store);
   const { $api } = useApi();
 
+  const selected = computed(() => coffees.value.find((coffee) => coffee.active));
+
   const list = async () => {
     const { data } = await $api.get('/v1/coffees');
     $store.defineCoffees(data);
   };
 
-  const make = async (coffee) => {
-    $store.startLoading();
+  const select = (target) => {
+    $store.select(target);
+  };
 
-    $store.select(coffee);
+  const make = async (selected) => {
+    $store.startLoading();
+    const coffee = selected.value;
 
     // Simulate brew time
     setTimeout(async () => {
@@ -85,7 +91,7 @@ export const useCoffeeMachine = () => {
 
     $modal.open({
       title: 'Refill successful!',
-      text: 'Your machine has been refilled.',
+      text: `The ${type} has been refilled.`,
       context: 'success',
     });
 
@@ -108,9 +114,19 @@ export const useCoffeeMachine = () => {
         maximumFractionDigits: 2,
       });
 
+      const waterCapacity = Number(machine.water_capacity_liters).toLocaleString('en-US', {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2,
+      });
+
+      const coffeeCapacity = Number(machine.coffee_capacity_grams).toLocaleString('en-US', {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2,
+      });
+
       $modal.open({
         title: 'Machine Status',
-        text: `The machine has ${water}L of water and ${coffee}g of coffee left.`,
+        text: `The machine has ${water}L of water and ${coffee}g of coffee left, with capacities of ${waterCapacity}L water and ${coffeeCapacity}g coffee.`,
         context: 'info',
       });
     }
@@ -125,6 +141,8 @@ export const useCoffeeMachine = () => {
   return {
     loading,
     list,
+    select,
+    selected,
     make,
     healthcheck,
     coffees,
