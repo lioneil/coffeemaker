@@ -107,6 +107,14 @@ COFFEE_MACHINE_COFFEE_REMAINING=500.0
 
 For this demonstration, only the first machine is ever used.
 
+## 🧪 Running Tests
+
+Some test coverage has been added for the Container classes and API endpoints.
+
+```bash
+sail artisan test
+```
+
 ## Conclusion
 
 Please reach out to me if you have trouble setting up the project locally.
