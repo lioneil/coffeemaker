@@ -7,6 +7,7 @@ import IconWarning from '@/components/icons/IconWarning.vue';
 import { computed, shallowRef } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useDialogModalStore } from '@/stores/useDialogModal.js';
+import Flex from '@/components/containments/Flex.vue';
 
 const $store = useDialogModalStore();
 const { content, context } = storeToRefs($store);
@@ -45,14 +46,20 @@ const $icon = computed(() => $icons.value[content.value.context]);
               >
                 <component :is="$icon" :class="[context.text]" class="size-6" />
               </div>
-              <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                <h3 id="dialog-title" :class="[context.text]" class="text-base font-semibold">{{ content.title }}</h3>
-                <div class="mt-2">
+              <Flex class="ml-4 w-full items-start justify-between gap-0 text-left">
+                <Flex class="mt-0 w-full flex-col items-start gap-1">
+                  <h3 id="dialog-title" :class="[context.text]" class="text-base font-semibold">{{ content.title }}</h3>
                   <p class="text-sm text-gray-500">
                     {{ content.text }}
                   </p>
-                </div>
-              </div>
+                </Flex>
+                <img
+                  v-if="content.image"
+                  :src="content.image"
+                  :alt="content.title"
+                  class="m-1 flex h-25 object-contain"
+                />
+              </Flex>
             </div>
           </div>
           <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">

@@ -42,10 +42,20 @@ defineProps({
     </Flex>
     <Flex class="items-center gap-1">
       <Flex v-if="water" class="items-center gap-0.5 text-center text-xs text-stone-500">
-        {{ parseFloat(water).toFixed(0) }}ml <IconGlassWater class="size-3 text-gray-700" />
+        {{
+          parseFloat(water)?.toLocaleString({
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          })
+        }}ml <IconGlassWater class="size-[10px] text-gray-600" />
       </Flex>
       <Flex v-if="coffee" class="items-center gap-0.5 text-center text-xs text-stone-500">
-        {{ parseFloat(coffee).toFixed(0) }}g <IconCoffeeBean class="size-2.5 text-gray-700" />
+        {{
+          parseFloat(coffee)?.toLocaleString({
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 2,
+          })
+        }}g <IconCoffeeBean class="size-[8px] text-gray-500" />
       </Flex>
     </Flex>
   </Card>

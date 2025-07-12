@@ -1,5 +1,6 @@
 <script setup>
 import IconCoffeeBean from '@/components/icons/IconCoffeeBean.vue';
+import { useMergeClasses } from '@/composables/utils/useMergeClasses';
 
 defineProps({
   loading: Boolean,
@@ -7,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="relative h-full w-full cursor-not-allowed">
+  <div :class="useMergeClasses('relative h-full w-full cursor-not-allowed', $attrs.class)">
     <IconCoffeeBean
       v-if="loading"
       class="absolute top-1/2 left-1/2 z-10 size-10 -translate-x-1/2 -translate-y-1/2 text-center text-white"

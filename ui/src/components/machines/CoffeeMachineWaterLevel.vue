@@ -2,7 +2,6 @@
 import Flex from '@/components/containments/Flex.vue';
 import IconGlassWater from '@/components/icons/IconGlassWater.vue';
 import { useCoffeeMachine } from '@/composables/coffee/useCoffeeMachine.js';
-import { useToFloat } from '@/composables/utils/useToFloat.js';
 
 const $machine = useCoffeeMachine();
 const { machine, loading } = $machine;
@@ -15,8 +14,13 @@ const { machine, loading } = $machine;
         v-if="loading"
         class="inline-block h-3 w-3 animate-spin rounded-full border-1 border-black border-t-transparent"
       ></span>
-      <span v-else class="font-bold text-gray-700">{{ useToFloat(machine.water_level_liters) }}</span> /
-      {{ machine.water_capacity_liters }} L
+      <span v-else class="font-bold text-gray-700">{{
+        machine.water_level_liters?.toLocaleString({
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 2,
+        })
+      }}</span>
+      / {{ machine.water_capacity_liters }} L
     </span>
     <IconGlassWater class="mb-1 size-4 text-gray-700" />
   </Flex>

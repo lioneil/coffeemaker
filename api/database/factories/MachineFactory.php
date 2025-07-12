@@ -28,10 +28,10 @@ class MachineFactory extends Factory
     public function prestine(): Factory
     {
         return $this->state(fn (array $attributes) => ([
-            'water_level_ml' => 2000,
-            'coffee_level_grams' => 500,
-            'water_capacity_ml' => 2000,
-            'coffee_capacity_grams' => 500,
+            'water_level_ml' => config('coffee.containers.water.remaining', 2000),
+            'water_capacity_ml' => config('coffee.containers.water.capacity', 2000),
+            'coffee_level_grams' => config('coffee.containers.coffee.remaining', 500),
+            'coffee_capacity_grams' => config('coffee.containers.coffee.capacity', 500),
         ]));
     }
 }

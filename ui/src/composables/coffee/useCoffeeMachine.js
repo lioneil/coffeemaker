@@ -35,6 +35,14 @@ export const useCoffeeMachine = () => {
           $store.stopLoading();
         });
 
+      $modal.open({
+        title: 'Now serving',
+        text: `Thank you for waiting. Here's your fresh ${coffee.name}!`,
+        image: coffee.image,
+        context: 'success',
+        button: 'Okay',
+      });
+
       $store.defineMachine(machine);
     }, 1100);
   };
@@ -59,7 +67,7 @@ export const useCoffeeMachine = () => {
 
     $store.startLoading();
     const { data: machine } = await $api
-      .post('/v1/machine/refill', { [type]: amount })
+      .post('/v1/machine/refill', { [ type ]: amount })
       .catch(({ response }) => {
         $modal.open({
           title: 'Refill failed!',

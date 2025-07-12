@@ -89,7 +89,8 @@ abstract class AbstractContainer implements Container
     protected function throwIfOverflow(float $potential, float $quantity): void
     {
         if ($potential > $this->capacity) {
-            throw new ContainerOverflowException("{$quantity}{$this->unit}");
+            $quantity = number_format($quantity);
+            throw new ContainerOverflowException("{$quantity} {$this->unit}");
         }
     }
 
@@ -104,7 +105,9 @@ abstract class AbstractContainer implements Container
     protected function throwIfInsufficient(float $quantity): void
     {
         if ($this->remaining < $quantity) {
-            throw new InsufficientResourceException("{$quantity}{$this->unit}", "{$this->remaining}{$this->unit}", "Ran out of {$this->name}");
+            $quantity = number_format($quantity);
+            $remaining = number_format($this->remaining);
+            throw new InsufficientResourceException("{$quantity} {$this->unit}", "{$remaining} {$this->unit}", "Ran out of {$this->name}");
         }
     }
 }

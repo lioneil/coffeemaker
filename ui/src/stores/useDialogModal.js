@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { computed, ref } from 'vue';
+import { computed, nextTick, ref } from 'vue';
 
 export const useDialogModalStore = defineStore('dialog.modal', () => {
   const shown = ref(false);
@@ -8,6 +8,7 @@ export const useDialogModalStore = defineStore('dialog.modal', () => {
     text: 'An error has occurred.',
     button: 'Close',
     context: 'info',
+    image: false,
   };
 
   const content = ref(DEFAULT_CONTENT);
@@ -27,8 +28,10 @@ export const useDialogModalStore = defineStore('dialog.modal', () => {
   });
 
   const open = (options = {}) => {
-    shown.value = true;
-    content.value = Object.assign(content.value, options);
+    content.value = Object.assign({ ...DEFAULT_CONTENT, ...options });
+    nextTick(() => {
+      shown.value = true;
+    });
   };
 
   const close = () => {

@@ -17,12 +17,12 @@ class CoffeeFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->words(3, true),
+            'name' => ucwords($this->faker->words(2, true)),
             'description' => $this->faker->paragraph(2),
-            'water_ml' => $this->faker->randomFloat(2, 30, 2000),
-            'coffee_grams' => $this->faker->randomFloat(2, 50, 500),
-            'image' => $this->faker->imageUrl(),
-            'price' => $this->faker->randomFloat(2, 0, 100),
+            'water_ml' => $this->faker->randomFloat(2, 16, 200),
+            'coffee_grams' => $this->faker->randomFloat(2, 8, 20),
+            'image' => url('/images/coffee-generic.png'),
+            'price' => $this->faker->randomFloat(2, 1, 10),
         ];
     }
 
