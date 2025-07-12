@@ -39,3 +39,18 @@ it('can refill coffee', function () {
     $response->assertStatus(200);
     expect($machine->coffee_level_grams)->toBe(150.0);
 });
+
+it("won't refill if water or coffee is low", function () {
+    // Arrangement
+    $machine = Machine::first();
+    $machine->water_level_ml = 1.0;
+    $machine->coffee_level_grams = 1.0;
+    $machine->save();
+
+    // Action
+    $response = $this->post(route('machine.refill'), ['coffee' => 50.0]);
+    $machine->refresh();
+
+    // Assertion
+    $response->assertStatus(200);
+});

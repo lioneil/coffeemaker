@@ -2,10 +2,12 @@
 
 namespace App\Containers\Exceptions;
 
-class InsufficientResourceException extends \InvalidArgumentException
+use Symfony\Component\HttpKernel\Exception\HttpException;
+
+class InsufficientResourceException extends HttpException
 {
-    public function __construct(string $quantity, string $remaining, string $message = 'Insufficient resource.', int $code = 422)
+    public function __construct(string $quantity, string $remaining, string $message = 'Insufficient resource.', int $code = 507)
     {
-        parent::__construct("{$message}. Need {$quantity} but only have {$remaining}.", $code);
+        parent::__construct($code, "{$message}. Need {$quantity} but only have {$remaining}.");
     }
 }
