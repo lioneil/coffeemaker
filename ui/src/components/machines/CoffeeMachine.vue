@@ -48,6 +48,7 @@ onBeforeMount(() => {
           >
             <CoffeeMachineCoffeeCard
               :active="coffee.active"
+              :disabled="coffee.disabled"
               :title="coffee.name"
               :price="coffee.price"
               :src="coffee.image"

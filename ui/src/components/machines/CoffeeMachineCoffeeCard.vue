@@ -9,6 +9,7 @@ defineProps({
   src: [String, Object],
   title: String,
   active: Boolean,
+  disabled: Boolean,
   price: [String, Number],
   water: String,
   coffee: String,
@@ -22,6 +23,7 @@ defineProps({
         [
           'flex h-auto w-56 cursor-pointer flex-col items-center gap-1 p-3',
           active && 'box-border bg-stone-100 outline-4 hover:bg-stone-200 focus:bg-stone-200 active:bg-stone-300',
+          disabled && 'pointer-events-none cursor-not-allowed opacity-50 shadow-none select-none hover:shadow-none',
         ],
         $attrs.class,
       )
@@ -35,7 +37,10 @@ defineProps({
     <Flex class="flex-1 items-end justify-center gap-0">
       <Flex class="flex-col gap-0">
         <slot name="title">
-          <h1 class="w-full text-sm font-bold">{{ title }}</h1>
+          <h1 class="w-full text-sm font-bold">
+            <span :class="[disabled && 'line-through']">{{ title }}</span>
+            {{ disabled && '(not available)' }}
+          </h1>
         </slot>
         <p v-if="price" class="text-center text-lg font-bold text-stone-500">${{ price }}</p>
       </Flex>

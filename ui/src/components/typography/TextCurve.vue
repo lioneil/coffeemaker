@@ -11,7 +11,7 @@
           a 40,40 0 1,1 -80,0
         "
     />
-    <text id="text" font-family="sans" font-size="13" font-weight="bold" fill="currentColor">
+    <text id="text" font-family="sans" font-size="12" font-weight="bold" fill="currentColor">
       <textPath id="textPath" startOffset="50%" text-anchor="end" href="#circlePath"><slot /></textPath>
     </text>
   </svg>

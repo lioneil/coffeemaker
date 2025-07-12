@@ -15,6 +15,7 @@ export const useCoffeeMachineStore = defineStore('coffee.machine', () => {
     loading: coffee.loading ?? false,
     active: coffee.active ?? false,
     id: i,
+    disabled: false,
     price: false,
     ...coffee,
   });
