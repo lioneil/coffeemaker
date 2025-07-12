@@ -5,6 +5,7 @@ namespace App\Containers;
 use App\Containers\Contracts\Container;
 use App\Containers\Exceptions\ContainerOverflowException;
 use App\Containers\Exceptions\InsufficientResourceException;
+use InvalidArgumentException;
 
 abstract class AbstractContainer implements Container
 {
@@ -74,7 +75,7 @@ abstract class AbstractContainer implements Container
     protected function throwIfQuantityIsLessThanZero(float $quantity): void
     {
         if ($quantity <= 0) {
-            throw new \InvalidArgumentException("{$this->name} amount must be greater than 0.");
+            throw new InvalidArgumentException("The {$this->name} amount must be greater than 0.");
         }
     }
 

@@ -63,13 +63,13 @@ class CoffeeMachineService implements Serviceable
      */
     public function refill(array $amounts): void
     {
-        if (!empty($amounts['water'])) {
-            $this->water->add($amounts['water']);
+        if (isset($amounts['water'])) {
+            $this->water->add((float) $amounts['water']);
             $this->machine->water_level_ml = $this->water->get();
         }
 
-        if (!empty($amounts['coffee'])) {
-            $this->coffee->add($amounts['coffee']);
+        if (isset($amounts['coffee'])) {
+            $this->coffee->add((float) $amounts['coffee']);
             $this->machine->coffee_level_grams = $this->coffee->get();
         }
 
