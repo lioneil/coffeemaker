@@ -31,6 +31,11 @@ defineProps({
     tabindex="0"
     role="button"
   >
+    <span
+      v-if="disabled"
+      class="absolute -top-1 -left-2 rounded border-red-400 bg-red-200 px-2 py-1 text-sm font-bold text-nowrap text-red-600"
+      >{{ 'not available' }}</span
+    >
     <slot name="image">
       <img :src="src" :alt="title" class="block size-[100px] object-contain" />
     </slot>
@@ -39,7 +44,6 @@ defineProps({
         <slot name="title">
           <h1 class="w-full text-sm font-bold">
             <span :class="[disabled && 'line-through']">{{ title }}</span>
-            {{ disabled && '(not available)' }}
           </h1>
         </slot>
         <p v-if="price" class="text-center text-lg font-bold text-stone-500">${{ price }}</p>
