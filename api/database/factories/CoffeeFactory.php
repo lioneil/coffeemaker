@@ -23,6 +23,7 @@ class CoffeeFactory extends Factory
             'coffee_grams' => $this->faker->randomFloat(2, 8, 20),
             'image' => url('/images/coffee-generic.png'),
             'price' => $this->faker->randomFloat(2, 1, 10),
+            'is_available' => $this->faker->boolean(),
         ];
     }
 
@@ -34,6 +35,7 @@ class CoffeeFactory extends Factory
             'coffee_grams' => 8,
             'image' => url('/images/espresso.png'),
             'price' => 2.50,
+            'is_available' => true,
         ]));
     }
 
@@ -45,6 +47,7 @@ class CoffeeFactory extends Factory
             'coffee_grams' => 16,
             'image' => url('/images/double-espresso.png'),
             'price' => 5.00,
+            'is_available' => true,
         ]));
     }
 
@@ -56,6 +59,7 @@ class CoffeeFactory extends Factory
             'coffee_grams' => 8,
             'image' => url('/images/ristretto.png'),
             'price' => 3.25,
+            'is_available' => true,
         ]));
     }
 
@@ -67,6 +71,7 @@ class CoffeeFactory extends Factory
             'coffee_grams' => 16,
             'image' => url('/images/americano.png'),
             'price' => 5.25,
+            'is_available' => true,
         ]));
     }
 }

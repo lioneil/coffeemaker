@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('image');
             $table->text('description')->nullable();
             $table->decimal('price', 8, 2)->nullable();
+            $table->boolean('is_available')->default(true);
             $table->timestamps();
         });
     }
