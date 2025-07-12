@@ -17,6 +17,7 @@ export const useCoffeeMachine = () => {
 
   const make = async (coffee) => {
     $store.startLoading();
+
     $store.select(coffee);
 
     // Simulate brew time
@@ -66,8 +67,9 @@ export const useCoffeeMachine = () => {
     }
 
     $store.startLoading();
+
     const { data: machine } = await $api
-      .post('/v1/machine/refill', { [ type ]: amount })
+      .post('/v1/machine/refill', { [type]: amount })
       .catch(({ response }) => {
         $modal.open({
           title: 'Refill failed!',
@@ -92,17 +94,29 @@ export const useCoffeeMachine = () => {
 
   const healthcheck = async (assertive = false) => {
     $store.startLoading();
+
     const { data: machine } = await $api.get('/v1/machine/healthcheck');
 
     if (assertive) {
+      const water = Number(machine.water_level_liters).toLocaleString('en-US', {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2,
+      });
+
+      const coffee = Number(machine.coffee_level_grams).toLocaleString('en-US', {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2,
+      });
+
       $modal.open({
         title: 'Machine Status',
-        text: `The machine has ${machine.water_level_liters}ml of water and ${machine.coffee_level_grams}g of coffee left.`,
+        text: `The machine has ${water}L of water and ${coffee}g of coffee left.`,
         context: 'info',
       });
     }
 
     $store.defineMachine(machine);
+
     setTimeout(() => {
       $store.stopLoading();
     }, 800);
