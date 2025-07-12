@@ -133,6 +133,10 @@ Some test coverage has been added for the Container classes and API endpoints.
 sail artisan test
 ```
 
+### Postman Documentation
+
+A Postman Collection of endpoints can be imported from [docs/Coffee API Collection.postman_collection.json](docs/Coffee%20API%20Collection.postman_collection.json) file.
+
 ## Conclusion
 
 Please reach out to me if you have trouble setting up the project locally.
