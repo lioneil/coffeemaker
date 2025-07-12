@@ -1,3 +1,4 @@
+<!--suppress CssUnusedSymbol -->
 <script setup>
 import ControlButton from '@/components/controls/ControlButton.vue';
 import IconCheck from '@/components/icons/IconCheck.vue';
