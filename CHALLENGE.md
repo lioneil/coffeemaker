@@ -45,7 +45,7 @@ The Vue interface should allow the following actions:
 - [x] You are free to use whatever you want to save the state of the coffee machine between requests.
 - [x] The naming of API endpoints and returned data is up to you.
 - [x] Use a docker container for the development.
-- [ ] Please include clear instructions on how to run your solution and list any assumptions that you have made.
+- [x] Please include clear instructions on how to run your solution and list any assumptions that you have made.
 - [x] If you have any questions or need any clarifications, feel free to make assumptions, but make sure to write down which assumptions you made.
 
 ## To easy? Nice to have then

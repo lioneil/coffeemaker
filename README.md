@@ -47,6 +47,15 @@ nvm use # optional, if using nvm.
 npm install
 ```
 
+### Assumptions
+
+Some assumptions for the application:
+
+- All prerequisite dependencies are assumed to be installed globally on the host machine.
+- While the Challenge file mentions Docker, Laravel Sail was used as a sufficient Docker-based solution.
+- Node.js is assumed to be installed globally, as no separate Node container was included.
+- Ristretto coffee is not part of the original Challenge specification, though it can be added optionally via seeding.
+
 ## ⚡ Running the Demo
 
 ```bash
