@@ -65,7 +65,12 @@ onBeforeMount(() => {
     <CoffeeMachineEmptyState v-else />
 
     <Flex class="my-2 shrink-0 items-center justify-center">
-      <ControlButton class="h-[60px] px-8 text-xl font-black uppercase" primary @click="$machine.make(selected)">
+      <ControlButton
+        :disabled="selected.value === undefined || loading"
+        class="h-[60px] px-8 text-xl font-black uppercase"
+        primary
+        @click="$machine.make(selected)"
+      >
         Brew
       </ControlButton>
     </Flex>

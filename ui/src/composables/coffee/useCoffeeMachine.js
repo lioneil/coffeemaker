@@ -23,6 +23,15 @@ export const useCoffeeMachine = () => {
   };
 
   const make = async (selected) => {
+    if (!selected.value) {
+      $modal.open({
+        title: 'Forgot something?',
+        text: 'Please select a coffee to brew.',
+        context: 'warning',
+      });
+      return;
+    }
+
     $store.startLoading();
     const coffee = selected.value;
 
