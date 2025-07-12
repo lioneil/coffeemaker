@@ -56,6 +56,8 @@ onBeforeMount(() => {
         </template>
       </Flex>
 
+      <div class="flex-1" />
+
       <Flex class="mt-6 flex-col md:mt-10">
         <HorizontalRule class="mb-4">Maintenance</HorizontalRule>
         <Flex class="flex-col items-stretch justify-end gap-4 lg:flex-row lg:items-center lg:gap-2">
