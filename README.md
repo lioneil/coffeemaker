@@ -1,6 +1,6 @@
 # Koffeemaker 9000
 
-![Koffeemaker 9000](./featured.alt.png)
+![Koffeemaker 9000](./featured.png)
 
 A full-stack web application demonstration built with Laravel (API) and Vue 3 (UI).
 
@@ -60,3 +60,53 @@ npm run dev
 The backend api is located at `http://localhost/`.
 
 Visit `http://localhost:5714` Koffeemaker application.
+
+## ☕  Data Population
+
+> [!NOTE] 
+> Default data should have been populated when running the `sail artisan migrate:fresh --seed` command from above.
+
+### Coffee
+
+If you encounter the page with no coffee, it is probably due to not running the seeder:
+
+```bash
+cd coffeemaker/api
+sail artisan db:seed
+```
+
+This should add three coffee varieties and a coffee machine.
+
+**Ristretto Coffee**
+
+To add a Ristretto coffee (mentioned in the Challenge file), run the seeder:
+
+```bash
+sail artisan db:seed --class CoffeeRistrettoSeeder
+```
+
+**Random Coffee**
+
+To add a random fake coffee, run the seeder:
+
+```bash
+sail artisan db:seed --class CoffeeRandomSeeder
+```
+
+### Machine
+
+By default, when running the `migrate` command with seeds, the application will install a random `Machine` resource.
+The water and coffee capacity is pulled from `.env` file, otherwise default values from the Challenge file are used.
+
+```dotenv
+COFFEE_MACHINE_WATER_CAPACITY=2000.0
+COFFEE_MACHINE_WATER_REMAINING=2000.0
+COFFEE_MACHINE_COFFEE_CAPACITY=500.0
+COFFEE_MACHINE_COFFEE_REMAINING=500.0
+```
+
+For this demonstration, only the first machine is ever used.
+
+## Conclusion
+
+Please reach out to me if you have trouble setting up the project locally.
