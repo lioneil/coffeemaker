@@ -9,7 +9,7 @@ const { machine, loading } = $machine;
 
 <template>
   <Flex class="items-center gap-1 text-sm text-gray-500">
-    <span class="min-w-16 text-end">
+    <span class="min-w-16 text-end text-nowrap">
       <span
         v-if="loading"
         class="inline-block h-3 w-3 animate-spin rounded-full border-1 border-black border-t-transparent"
