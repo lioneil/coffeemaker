@@ -34,6 +34,7 @@ cd coffeemaker/api
 composer install
 cp .env.example .env
 vendor/bin/sail up -d
+vendor/bin/sail artisan key:generate
 vendor/bin/sail artisan migrate:fresh --seed
 vendor/bin/sail artisan storage:link
 ```
@@ -77,7 +78,7 @@ npm run dev
 
 The backend api is located at `http://localhost/`.
 
-Visit `http://localhost:5714` Koffeemaker application.
+Visit `http://localhost:5714` (or whatever port was selected) Koffeemaker application.
 
 ## ☕  Data Population
 
