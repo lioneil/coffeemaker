@@ -58,6 +58,15 @@ Some assumptions for the application:
 
 ## ⚡ Running the Demo
 
+A helper script is added to run the two projects:
+
+```bash
+chmod +x dev.sh
+./dev.sh
+```
+
+This will run an equivalent of:
+
 ```bash
 cd coffeemaker/api
 vendor/bin/sail up -d
@@ -91,7 +100,7 @@ This should add three coffee varieties and a coffee machine.
 To add a Ristretto coffee (mentioned in the Challenge file), run the seeder:
 
 ```bash
-sail artisan db:seed --class CoffeeRistrettoSeeder
+sail artisan db:seed CoffeeRistrettoSeeder
 ```
 
 **Random Coffee**
@@ -99,7 +108,7 @@ sail artisan db:seed --class CoffeeRistrettoSeeder
 To add a random fake coffee, run the seeder:
 
 ```bash
-sail artisan db:seed --class CoffeeRandomSeeder
+sail artisan db:seed CoffeeRandomSeeder
 ```
 
 ### Machine
