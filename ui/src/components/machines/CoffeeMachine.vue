@@ -64,6 +64,8 @@ onBeforeMount(() => {
 
     <CoffeeMachineEmptyState v-else />
 
+    <div class="flex-1" />
+
     <Flex class="my-2 shrink-0 items-center justify-center">
       <ControlButton
         :disabled="selected.value === undefined || loading"
